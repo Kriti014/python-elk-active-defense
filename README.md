@@ -80,36 +80,28 @@ The image tags are in the right syntax, but **three specific mistakes in your Ma
 
 ---
 
-
 ## 📸 System Execution & Proof of Concept
 
-### Real-Time Threat Containment Output
+### Scenario 1: Database Layer Security (SQL Injection Containment)
 
-When an inbound threat vector is detected in live streams (`.ds-logs-mysql.*` or `.ds-logs-winlog.*`), `soar_engine.py` executes immediate network isolation:
+* **Attack Vector (Kali Linux):** 
+  `mysql -h 192.168.10.20 -P 3306 -u root -p'Password123!' mysql --skip-ssl -e "SELECT * FROM user WHERE 1=1 OR 1=1;"`
+* **Automated Mitigation (Ubuntu SOAR Engine):** Real-time pattern detection triggering immediate inbound socket isolation via `iptables` for source IP `192.168.10.30`.
 
-```text
-ENTERPRISE SIEM CORE: UNIFIED DATABASE & OS THREAT ENGINE
+#### SQL Injection Mitigation Proof
+![alt text](lotl_mitigation_proof.png)
 
-[*] Engine Active at Local Time: 2026-07-31 11:50:00
-[+] Monitoring Data Streams: [.ds-logs-mysql.*] & [.ds-logs-winlog.*]
-[*] Pre-caching existing historic logs from Elasticsearch ...
-[+] Cached 412 historic documents. Listening for LIVE events only ...
+---
 
-[SIEM THREAT ALERT] - 2026-07-31 11:51:20 | LAYER: DATABASE
-Target Host: sme-dc
-Threat Class: SQLi: Auth Bypass
-Raw Query: SELECT * FROM users WHERE username = 'admin' OR 1=1 --
+### Scenario 2: Host Layer Security (Living-off-the-Land Mitigation)
 
-[+ ACTIVE RESPONSE TRIGGERED] Initiating automated containment for: 192.168.10.30
-[SUCCESS] Linux Kernel Firewall (iptables): Inbound socket blocked for 192.168.10.30
-[ACTION GENERATED] Host Mitigation Command: netsh advfirewall firewall add rule name="SIEM_AutoBlock_192.168.10.30" dir=in action=block remoteip=192.168.10.30
-[MITIGATION COMPLETE] Threat origin 192.168.10.30 is actively contained.
+* **Attack Vector (Kali Linux):** Execution of binary abuse tools (`certutil` / `bitsadmin`) to bypass standard defenses.
+* **Automated Mitigation (Ubuntu SOAR Engine):** Sysmon telemetry analysis triggering dynamic `netsh advfirewall` blocking rules on target host.
+
+#### LoTL Injection Mitigation Proof
+![alt text](sqli_mitigation_proof.png)
 
 ```
-
-#### lotl_mitigation_proof.png
-
-#### Living-off-the-Land (LotL) Mitigation Proof
 
 ---
 
