@@ -65,7 +65,7 @@ pip install elasticsearch
 3. **Configure Connection:** Update host IP address and Elasticsearch connection details in `src/sqli_detector.py`.
 4. **Execute Engine:**
 ```bash
-python3 src/sqli_detector.py
+python3 src/soar_detector.py
 
 ```
 ---
