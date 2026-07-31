@@ -107,7 +107,7 @@ Raw Query: SELECT * FROM users WHERE username = 'admin' OR 1=1 --
 
 ```
 
-#### SQL Injection Mitigation Proof
+#### lotl_mitigation_proof.png
 
 #### Living-off-the-Land (LotL) Mitigation Proof
 
