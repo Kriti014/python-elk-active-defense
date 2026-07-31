@@ -69,18 +69,8 @@ python3 src/soar_detector.py
 
 ```
 
----
 
-## 📄 Academic Research
-
-This repository is the practical realization of my final dissertation: *"Automated Threat Hunting & Active Response using ELK (Elasticsearch, Logstash, Kibana) Stack and Python for Resource-Constrained SMEs"*. The complete research paper detailing methodology, mathematical proofs, and experimental trial matrices can be found in the `/docs` folder.
-
-The image tags are in the right syntax, but **three specific mistakes in your Markdown structure** are breaking the renderer and preventing the image from displaying:
-
-
----
-
-## 📸 System Execution & Proof of Concept
+##  System Execution & Proof of Concept
 
 ### Scenario 1: Database Layer Security (SQL Injection Containment)
 
@@ -89,7 +79,7 @@ The image tags are in the right syntax, but **three specific mistakes in your Ma
 * **Automated Mitigation (Ubuntu SOAR Engine):** Real-time pattern detection triggering immediate inbound socket isolation via `iptables` for source IP `192.168.10.30`.
 
 #### SQL Injection Mitigation Proof
-![alt text](lotl_mitigation_proof.png)
+![alt text](sqli_mitigation_proof.png)
 
 ---
 
@@ -99,9 +89,8 @@ The image tags are in the right syntax, but **three specific mistakes in your Ma
 * **Automated Mitigation (Ubuntu SOAR Engine):** Sysmon telemetry analysis triggering dynamic `netsh advfirewall` blocking rules on target host.
 
 #### LoTL Injection Mitigation Proof
-![alt text](sqli_mitigation_proof.png)
+![alt text](lotl_mitigation_proof.png) 
 
-```
 
 ---
 
@@ -109,5 +98,5 @@ The image tags are in the right syntax, but **three specific mistakes in your Ma
 
 This repository is the practical realization of my final dissertation: *"Automated Threat Hunting & Active Response using ELK (Elasticsearch, Logstash, Kibana) Stack and Python for Resource-Constrained SMEs"*. The complete research paper detailing methodology, mathematical proofs, and experimental trial matrices can be found in the `/docs` folder.
 
-```
+---
 
