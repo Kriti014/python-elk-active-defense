@@ -68,9 +68,54 @@ pip install elasticsearch
 python3 src/soar_detector.py
 
 ```
+
 ---
 
 ## 📄 Academic Research
 
 This repository is the practical realization of my final dissertation: *"Automated Threat Hunting & Active Response using ELK (Elasticsearch, Logstash, Kibana) Stack and Python for Resource-Constrained SMEs"*. The complete research paper detailing methodology, mathematical proofs, and experimental trial matrices can be found in the `/docs` folder.
+
+The image tags are in the right syntax, but **three specific mistakes in your Markdown structure** are breaking the renderer and preventing the image from displaying:
+
+
+---
+
+
+## 📸 System Execution & Proof of Concept
+
+### Real-Time Threat Containment Output
+
+When an inbound threat vector is detected in live streams (`.ds-logs-mysql.*` or `.ds-logs-winlog.*`), `soar_engine.py` executes immediate network isolation:
+
+```text
+ENTERPRISE SIEM CORE: UNIFIED DATABASE & OS THREAT ENGINE
+
+[*] Engine Active at Local Time: 2026-07-31 11:50:00
+[+] Monitoring Data Streams: [.ds-logs-mysql.*] & [.ds-logs-winlog.*]
+[*] Pre-caching existing historic logs from Elasticsearch ...
+[+] Cached 412 historic documents. Listening for LIVE events only ...
+
+[SIEM THREAT ALERT] - 2026-07-31 11:51:20 | LAYER: DATABASE
+Target Host: sme-dc
+Threat Class: SQLi: Auth Bypass
+Raw Query: SELECT * FROM users WHERE username = 'admin' OR 1=1 --
+
+[+ ACTIVE RESPONSE TRIGGERED] Initiating automated containment for: 192.168.10.30
+[SUCCESS] Linux Kernel Firewall (iptables): Inbound socket blocked for 192.168.10.30
+[ACTION GENERATED] Host Mitigation Command: netsh advfirewall firewall add rule name="SIEM_AutoBlock_192.168.10.30" dir=in action=block remoteip=192.168.10.30
+[MITIGATION COMPLETE] Threat origin 192.168.10.30 is actively contained.
+
+```
+
+#### SQL Injection Mitigation Proof
+
+#### Living-off-the-Land (LotL) Mitigation Proof
+
+---
+
+## 📄 Academic Research
+
+This repository is the practical realization of my final dissertation: *"Automated Threat Hunting & Active Response using ELK (Elasticsearch, Logstash, Kibana) Stack and Python for Resource-Constrained SMEs"*. The complete research paper detailing methodology, mathematical proofs, and experimental trial matrices can be found in the `/docs` folder.
+
+```
 
