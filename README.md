@@ -32,14 +32,14 @@ The environment consists of an isolated 3-node virtual laboratory:
 
 ## 🎯 Threat Detection & Mitigation Matrix
 
-| Threat Class | Layer | Signature Pattern | SOAR Response |
-| :--- | :--- | :--- | :--- |
-| **SQLi (Auth Bypass)** | Database | `(?i)\b(OR\|AND\|XOR)\b\s+.*=.*` | Socket Drop (`iptables`) |
-| **SQLi (UNION Extract)** | Database | `(?i)\bUNION\b.*\bSELECT\b` | Socket Drop (`iptables`) |
-| **SQLi (Schema Recon)** | Database | `(?i)@@version\|version_comment\|\bfrom\b\s+information_schema` | Socket Drop (`iptables`) |
-| **LotL (Certutil)** | Host (Sysmon 1) | `(?i)certutil(\.exe)?.*(-urlcache\|-split)` | Firewall Block (`netsh`) |
-| **LotL (Bitsadmin)** | Host (Sysmon 1) | `(?i)bitsadmin(\.exe)?.*(/transfer\|/create)` | Firewall Block (`netsh`) |
-| **LotL (WMIC Recon)** | Host (Sysmon 1) | `(?i)wmic(\.exe)?\s+(process\|service)` | Firewall Block (`netsh`) |
+| Threat Class | Layer | Signature Pattern | MITRE ATT&CK | SOAR Response |
+| :--- | :--- | :--- | :--- | :--- |
+| **SQLi (Auth Bypass)** | Database | `(?i)\b(OR\|AND\|XOR)\b\s+.*=.*` | `T1190` | Socket Drop (`iptables`) |
+| **SQLi (UNION Extract)** | Database | `(?i)\bUNION\b.*\bSELECT\b` | `T1190` / `T1005` | Socket Drop (`iptables`) |
+| **SQLi (Schema Recon)** | Database | `(?i)@@version\|version_comment\|\bfrom\b\s+information_schema` | `T1082` | Socket Drop (`iptables`) |
+| **LotL (Certutil)** | Host (Sysmon 1) | `(?i)certutil(\.exe)?.*(-urlcache\|-split)` | `T1105` | Firewall Block (`netsh`) |
+| **LotL (Bitsadmin)** | Host (Sysmon 1) | `(?i)bitsadmin(\.exe)?.*(/transfer\|/create)` | `T1197` | Firewall Block (`netsh`) |
+| **LotL (WMIC Recon)** | Host (Sysmon 1) | `(?i)wmic(\.exe)?\s+(process\|service)` | `T1047` / `T1082` | Firewall Block (`netsh`) |
 
 ---
 
