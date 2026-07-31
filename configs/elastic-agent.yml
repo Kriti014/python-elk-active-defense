@@ -1,0 +1,25 @@
+outputs:
+  default:
+    type: elasticsearch
+    hosts: ["http://192.168.10.10:9200"]
+
+inputs:
+  - type: winlog
+    streams:
+      - name: Security
+        data_stream:
+          dataset: winlog.security
+      - name: Microsoft-Windows-Sysmon/Operational
+        data_stream:
+          dataset: winlog.sysmon
+      - name: Microsoft-Windows-Sysmon64/Operational
+        data_stream:
+          dataset: winlog.sysmon
+
+  - type: logfile
+    streams:
+      - paths:
+          - "C:/ProgramData/MySQL/MySQL Server 9.7/Data/SME-DC.log"
+        data_stream:
+          dataset: mysql.general
+        tags: ["mysql", "sqli-monitoring"]
